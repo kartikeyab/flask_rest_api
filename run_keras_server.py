@@ -1,7 +1,7 @@
-from keras.preprocessing.image import img_to_array
-from keras.applications import imagenet_utils
-from keras.models import load_model
-from keras import backend as K
+from tensorflow.keras.preprocessing.image import img_to_array
+from tensorflow.keras.applications import imagenet_utils
+from tensorflow.keras.models import load_model
+from tensorflow.keras import backend as K
 from PIL import Image
 import numpy as np
 import flask
