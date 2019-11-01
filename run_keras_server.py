@@ -1,13 +1,3 @@
-# USAGE
-# Start the server:
-# 	python run_keras_server.py
-# Submit a request via cURL:
-# 	curl -X POST -F image=@dog.jpg 'http://localhost:5000/predict'
-# Submita a request via Python:
-#	python simple_request.py
-
-# import the necessary packages
-from keras.applications import ResNet50
 from keras.preprocessing.image import img_to_array
 from keras.applications import imagenet_utils
 from keras.models import load_model
@@ -24,9 +14,6 @@ app = flask.Flask(__name__)
 model = None
 
 def load_saved_model():
-	# load the pre-trained Keras model (here we are using a model
-	# pre-trained on ImageNet and provided by Keras, but you can
-	# substitute in your own networks just as easily)
 	global model
 	model = load_model(MODEL_PATH)
 	global graph
@@ -72,19 +59,6 @@ def predict():
 					result['Predicted Class']=str('Clip')
 				else:
 					result['Predicted Class']=str('Noclip')
-			#y_classes = preds.argmax(axis=-1)
-
-			#results = imagenet_utils.decode_predictions(preds)
-			#data["predictions"] = preds
-
-			# loop over the results and add them to the list of
-			# returned predictions
-			#for (imagenetID, label, prob) in results[0]:
-			#	r = {"label": label, "probability": float(prob)}
-			#	data["predictions"].append(r)
-
-			# indicate that the request was a success
-			#data["success"] = True
 
 	# return the data dictionary as a JSON response
 	return flask.jsonify(result)
