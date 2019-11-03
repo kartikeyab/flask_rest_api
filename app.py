@@ -9,7 +9,7 @@ import io
 import tensorflow as tf
 # initialize our Flask application and the Keras model
 
-MODEL_PATH = 'model_weights/model10_latestversion.h5'
+MODEL_PATH = 'model10_latestversion.h5'
 app = flask.Flask(__name__)
 model = None
 
@@ -52,6 +52,7 @@ def predict():
 
 			# classify the input image and then initialize the list
 			# of predictions to return to the client
+			#graph = tf.get_default_graph()
 			with graph.as_default():
 				preds = model.predict(image)
 				preds_sub = preds.tolist()
